@@ -1,7 +1,5 @@
 Product Vision Document
 
-This is the template for the Product Vision Document that you'll complete as a team at the beginning of Build Week. The PVD is crucial to the planning phase and is mandatory for all groups to complete.
-
 ☝️ Proposal
 - What problem does your app solve?
     • People suck at remembering things. Plants die.
