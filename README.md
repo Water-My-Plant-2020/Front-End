@@ -1,4 +1,6 @@
-Product Vision Document
+Product Vision Document 
+
+https://docs.google.com/document/d/1vjmF97hsXObun87Zee2z5Mdbznp3-x22W0LR-EVe5U8/edit?usp=sharing
 
 ☝️ Proposal
 - What problem does your app solve?
