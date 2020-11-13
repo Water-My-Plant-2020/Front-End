@@ -19,19 +19,20 @@ export default function Form() {
     };
 
     const onFormSubmit = () => {
-        console.log(`Login Submitted: ${data}`);
+        console.log('Login Submitted and Displayed on Next Line');
+        console.log(data);
     }
 
 
     return(
         <div className="form" >
             <form onSubmit={(event) => {event.preventDefault(); onFormSubmit(); }}>
-                <label htmlFor="username"> Username: </label>
+                <label htmlFor="username" style={{color:'white'}}> Username: </label>
                 <input 
                     id="username" 
                     type="text"
                     name="username"
-                    placeholder="Username/Email"
+                    placeholder="Username / Email"
                     onChange={onInputChange}
                     />
                 <label htmlFor="password"> Password: </label>
