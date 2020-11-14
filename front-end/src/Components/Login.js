@@ -35,7 +35,7 @@ export default function Form() {
                     placeholder="Username / Email"
                     onChange={onInputChange}
                     />
-                <label htmlFor="password"> Password: </label>
+                <label htmlFor="password" style={{color:'white'}}> Password: </label>
                 <input 
                     id="password"
                     name="password"
