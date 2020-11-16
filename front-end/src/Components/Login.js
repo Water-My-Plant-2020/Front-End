@@ -1,10 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components'
+
+const FormContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+`
+
+const LoginForm = styled.form`
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        margin: 0 -1em 0 0;
+    `
+const InputSection = styled.section`
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        margin: 1em 1em 1em 0;
+    `
 
 export default function Form() {
 
+
     const [data, setData] = useState({
-        username : '',
-        password : ''
+        username: '',
+        password: ''
     });
 
     useEffect(() => {
@@ -13,7 +35,7 @@ export default function Form() {
 
     const onInputChange = event => {
         setData({
-            ...data, 
+            ...data,
             [event.target.name]: event.target.value
         })
     };
@@ -24,28 +46,37 @@ export default function Form() {
     }
 
 
-    return(
-        <div className="form" >
-            <form onSubmit={(event) => {event.preventDefault(); onFormSubmit(); }}>
-                <label htmlFor="username" style={{color:'white'}}> Username: </label>
-                <input 
-                    id="username" 
-                    type="text"
-                    name="username"
-                    placeholder="Username / Email"
-                    onChange={onInputChange}
+    return (
+        <FormContainer className="form" >
+            <LoginForm onSubmit={(event) => { event.preventDefault(); onFormSubmit(); }}>
+                <InputSection>
+                    <div>
+                        <label htmlFor="username"> Username </label>
+                    </div>
+                    <input
+                        id="username"
+                        type="text"
+                        name="username"
+                        placeholder="Username / Email"
+                        onChange={onInputChange}
                     />
-                <label htmlFor="password" style={{color:'white'}}> Password: </label>
-                <input 
-                    id="password"
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    onChange={onInputChange}
-                     />
-                <button type='submit'>Login</button>
-            </form>
-        </div>
+                </InputSection>
+
+                <InputSection>
+                    <div>
+                        <label htmlFor="password"> Password </label>
+                    </div>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Password"
+                        onChange={onInputChange}
+                    />
+                </InputSection>
+            </LoginForm>
+            <button classname="loginButton" type='submit'>Login</button>
+        </FormContainer>
     )
 
 }
