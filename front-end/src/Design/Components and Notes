@@ -16,3 +16,19 @@ Footer
 
 Color Pallet:
     #059033, #93CB56, #7BAA47 and #355A20
+
+
+Data Breakdown:
+
+User
+    id
+    username  (email)
+    phonenumber
+    password
+
+Plants
+    id
+    nickname
+    h2ofrequency
+    watered
+    speciesName
