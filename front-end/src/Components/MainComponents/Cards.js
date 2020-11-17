@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card'
+import styled from 'styled-components'
+
+const CardsLayout = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+`
 
 export default function Cards() {
     const [plantData, setPlantData] = useState(null);
@@ -26,10 +34,10 @@ export default function Cards() {
       }
       else {
         return (
-          <div>
+          <CardsLayout>
             {plantData.map((char, index )=> 
             { return <Card key={index} data={char} /> })}
-          </div>
+          </CardsLayout>
         );
       }
     }
