@@ -17,7 +17,7 @@ export default function Header() {
 
     return(
         <StyledHeader>
-            <h1>Water My Plants</h1>
+            <h1><span>Water</span><br/>My Plants</h1>
             <Login />
         </StyledHeader>
     )
