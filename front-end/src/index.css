@@ -1,9 +1,7 @@
 body {
   margin: 0;
   width: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #355a20;
@@ -15,16 +13,23 @@ code {
 }
 
 h1{
-  color: #d4eeb8;
+  color: #93cb56;
   margin-left: 1em;
+  text-align: left;
+  font-size: 2.5em;
 }
 
 button {
-  border: none;
+  border: 1px solid #355a20;
+  border-radius: 10px;
   font-weight: bold;
   color: #355a20;
   background-color: #93cb56;
   padding: 0.3em 1.5em;
+}
+
+button:hover {
+  background-color:#d4eeb8;
 }
 
 label {
@@ -34,4 +39,8 @@ label {
 
 input{
   background-color: #d4eeb8;
+}
+
+span {
+  color: #d4eeb8;
 }

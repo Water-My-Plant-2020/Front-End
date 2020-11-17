@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
+import axios from 'axios';
+
 
 const FormContainer = styled.div`
     display: flex;
@@ -35,9 +37,19 @@ export default function Form() {
         password: ''
     });
 
-    useEffect(() => {
-        console.log(data);
-    }, [data])
+    const getLogin = (() => {
+        axios.get(`https://water-my-plants-2020.herokuapp.com/users`)
+          .then(response => {
+            console.log(Object.values(response.data));
+          })
+          .catch(err => { console.log(err) });
+      })
+
+      
+
+    // useEffect(() => {
+    //     console.log(data);
+    // }, [data])
 
     const onInputChange = event => {
         setData({
@@ -49,6 +61,7 @@ export default function Form() {
     const onFormSubmit = () => {
         console.log('Login Submitted and Displayed on Next Line');
         console.log(data);
+
     }
 
 
