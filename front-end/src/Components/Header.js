@@ -7,7 +7,8 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 background-color: #059033;
-padding: 1em;
+padding: 1em 0;
+width: 100%;
 `
 
 export default function Header() {

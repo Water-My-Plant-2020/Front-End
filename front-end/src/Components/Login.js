@@ -9,17 +9,23 @@ const FormContainer = styled.div`
 `
 
 const LoginForm = styled.form`
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-start;
-        margin: 0 -1em 0 0;
-    `
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin: 1em;
+`
 const InputSection = styled.section`
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        margin: 1em 1em 1em 0;
-    `
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-left: 1em;
+`
+
+const ButtonContainer = styled.div`
+    display: flex;
+    margin-top: 1em;
+    justify-content: flex-end;
+`
 
 export default function Form() {
 
@@ -73,9 +79,11 @@ export default function Form() {
                         placeholder="Password"
                         onChange={onInputChange}
                     />
+                    <ButtonContainer>
+                        <button className="loginButton" type='submit'>Login</button>
+                    </ButtonContainer>
                 </InputSection>
             </LoginForm>
-            <button classname="loginButton" type='submit'>Login</button>
         </FormContainer>
     )
 

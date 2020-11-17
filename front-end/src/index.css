@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -15,6 +16,7 @@ code {
 
 h1{
   color: #d4eeb8;
+  margin-left: 1em;
 }
 
 button {
