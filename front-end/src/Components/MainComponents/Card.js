@@ -8,10 +8,12 @@ const PlantCard = styled.section`
     width: fit-content;
     max-width: 30%;
     min-width: 20%;
-    height: 20%;
+    height: fit-content;
+    min-height: 35rem;
     margin: 2em auto;
     align-items: center;
     padding: 1em;
+    margin: 1em;
 `;
 
 const ImgDiv = styled.div`
@@ -23,7 +25,7 @@ const ImgDiv = styled.div`
 const PlantImg = styled.img`
     border: 3px solid #124d4f;
     border-radius: 30px;
-    max-height: 20em;
+    max-height: 15rem;
     max-width: 20em;
 `;
 
