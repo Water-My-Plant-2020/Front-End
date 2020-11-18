@@ -12,8 +12,9 @@ const PlantCard = styled.section`
     min-height: 35rem;
     margin: 2em auto;
     align-items: center;
-    padding: 1em;
+    
     margin: 1em;
+    border-radius: 10px;
 `;
 
 const ImgDiv = styled.div`
@@ -42,13 +43,32 @@ const Name = styled.h2`
     margin: 0;
 `;
 
+const StatusBar = styled.div`
+    display: flex;
+    height: 3em;
+    width: 95%;
+    align-items: center;
+    padding: 0 3% 0 2%;
+    margin-bottom: 1em;
+    color: white;
+`
+
 export default function Card(props) {
     const { data } = props;
     
     const [isWatered, setIsWatered] = useState(data.watered);
 
-    const waterPlant = () => {
+    const colorBasedOnState = currentState => {
+        if(currentState === true){
+            return 'royalblue';
+          }
+          else{
+            return '#8a0303';
+          }
+        }
 
+    const statusBarColor = {
+        backgroundColor: colorBasedOnState(isWatered)
     }
 
 
@@ -60,6 +80,7 @@ export default function Card(props) {
     else {
         return(
             <PlantCard>
+                <StatusBar style={statusBarColor}><h4>{isWatered === true ? 'Plant Has Been Watered' : 'Plant Needs Water'}</h4></StatusBar>
                 <ImgDiv>
                     <PlantImg src={data.plantImage}></PlantImg>
                 </ImgDiv>
@@ -67,7 +88,7 @@ export default function Card(props) {
                     <Name>{data.nickname}</Name>
                     <p>{`Species: ${data.speciesName}`}</p>
                     <p>{`Watering Frequency: ${(data.h2oFrequency).toUpperCase()}`}</p>
-                    <p>{`Status: ${isWatered === true}`}</p>
+                    <p></p>
                     <button onClick = {() => {setIsWatered(true)}}>Water</button>
                 </AttrDiv>
             </PlantCard>
