@@ -89,7 +89,7 @@ export default function Card(props) {
                     <p>{`Species: ${data.speciesName}`}</p>
                     <p>{`Watering Frequency: ${(data.h2oFrequency).toUpperCase()}`}</p>
                     <p></p>
-                    <button onClick = {() => {setIsWatered(true)}}>Water</button>
+                    <button onClick = {() => {setIsWatered(true)}} style={{width:'10em', margin: '0 auto'}}>Water</button>
                 </AttrDiv>
             </PlantCard>
         )
