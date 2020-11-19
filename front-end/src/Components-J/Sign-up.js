@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
+import axios from 'axios';
+import { Link, useHistory } from 'react-router-dom';
 const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -41,14 +43,29 @@ export default function SignUp() {
         })
     };
 
-    const onFormSubmit = () => {
-        console.log("Sign-in submitted and displayed below")
-        console.log(data)
-    }
+    const history = useHistory();
+    const formSubmit = e => {
+        e.preventDefault();
+        
+        axios
+            .post("https://water-my-plants-2020.herokuapp.com/register", data)
+            .then((res) => {
+            history.replace("/plants");
+            })
+            .catch((err) => {
+            console.log(err.message);
+            });
+        };
     
     return (
-        <FormContainer classname="formSignUp">
-            <SignUpForm onSubmit={(event) => {event.preventDefault(); onFormSubmit();}}>
+        <>
+        <ButtonContainer>
+            <button className="signUpButton">
+                <Link to="">Home</Link>
+            </button>
+        </ButtonContainer>
+        <FormContainer className="formSignUp">
+            <SignUpForm onSubmit={formSubmit}>
                 <div>
                     <label><h2>Sign-Up</h2></label>
                 </div>
@@ -71,7 +88,7 @@ export default function SignUp() {
                     </div>
                     <input
                         id="password"
-                        type="text"
+                        type="password"
                         name="password"
                         placeholder="Password"
                         onChange={onInputChange}
@@ -95,6 +112,7 @@ export default function SignUp() {
                 </InputSection>
             </SignUpForm>
         </FormContainer>
+        </>
     )
 
 }

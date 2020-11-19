@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -45,21 +45,21 @@ export default function Form() {
         })
     };
     
-      const formSubmit = e => {
-        e.preventDefault();
-        console.log("Data Submitted: ", data);
+    const history = useHistory();
+
+    const formSubmit = e => {
+    e.preventDefault();
     
-        axios
-          .post("https://water-my-plants-2020.herokuapp.com/login", data)
-          .then((res) => {
-            console.log(res, "submit response");
-            localStorage.setItem("token", res.data.token);
-            // history.push("/plants");
-          })
-          .catch((err) => {
-            console.log(err.message);
-          });
-      };
+    axios
+        .post("https://water-my-plants-2020.herokuapp.com/login", data)
+        .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        history.replace("/plants");
+        })
+        .catch((err) => {
+        console.log(err.message);
+        });
+    };
 
 
     return (
