@@ -102,7 +102,9 @@ export const Content = () => {
           </FeaturesContent>
           <SignUp>
             <H2>
-              <Link to="/signup">Sign Up Here</Link>
+              <button className="signUpButton">
+                <Link to="/signup">Sign Up Here</Link>
+              </button>
             </H2>
           </SignUp>
         </Wrapper>

@@ -28,6 +28,11 @@ button {
   padding: 0.3em 1.5em;
 }
 
+button a:link, button a:active, button a:visited {
+  color: #355a20;
+  text-decoration: none;
+}
+
 button:hover {
   background-color:#d4eeb8;
 }

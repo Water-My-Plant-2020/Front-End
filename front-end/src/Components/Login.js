@@ -46,16 +46,13 @@ export default function Form() {
     };
     
     const history = useHistory();
-    console.log ("UseHistory", history);
 
     const formSubmit = e => {
     e.preventDefault();
-    console.log("Data Submitted: ", data);
     
     axios
         .post("https://water-my-plants-2020.herokuapp.com/login", data)
         .then((res) => {
-        console.log(res, "submit response");
         localStorage.setItem("token", res.data.token);
         history.replace("/plants");
         })

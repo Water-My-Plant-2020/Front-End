@@ -6,6 +6,7 @@ import Footer from './Components/Footer';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 import Content from './Components/Content/';
+import Signup from './Components-J/Sign-up';
 
 function App() {
   
