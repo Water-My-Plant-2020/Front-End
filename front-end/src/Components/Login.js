@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
+// import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -37,37 +38,33 @@ export default function Form() {
         password: ''
     });
 
-    const getLogin = (() => {
-        axios.get(`https://water-my-plants-2020.herokuapp.com/users`)
-          .then(response => {
-            console.log(Object.values(response.data));
-          })
-          .catch(err => { console.log(err) });
-      })
-
-      
-
-    // useEffect(() => {
-    //     console.log(data);
-    // }, [data])
-
-    const onInputChange = event => {
+    const onInputChange = e => {
         setData({
             ...data,
-            [event.target.name]: event.target.value
+            [e.target.name]: e.target.value
         })
     };
-
-    const onFormSubmit = () => {
-        console.log('Login Submitted and Displayed on Next Line');
-        console.log(data);
-
-    }
+    
+      const formSubmit = e => {
+        e.preventDefault();
+        console.log("Data Submitted: ", data);
+    
+        axios
+          .post("https://water-my-plants-2020.herokuapp.com/login", data)
+          .then((res) => {
+            console.log(res, "submit response");
+            localStorage.setItem("token", res.data.token);
+            // history.push("/plants");
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      };
 
 
     return (
         <FormContainer className="form" >
-            <LoginForm onSubmit={(event) => { event.preventDefault(); onFormSubmit(); }}>
+            <LoginForm onSubmit={formSubmit}>
                 <InputSection>
                     <div>
                         <label htmlFor="username"> Username </label>

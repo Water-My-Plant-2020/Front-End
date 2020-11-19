@@ -1,15 +1,21 @@
 import './App.css';
 import React from 'react';
-import Header from './Components/Header'
-import Main from './Components/Main'
-import Footer from './Components/Footer'
+import Card from './Components/MainComponents/Card';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from './utils/PrivateRoute';
+import Content from './Components/Content';
 
 function App() {
   
   return (
     <div className="App">
       <Header />
-      <Main />
+        <Switch>
+          <PrivateRoute exact path="/plants" component={ Card }/>
+          <Route path="" component={ Content } />
+        </Switch>
       <Footer />
     </div>
   );
