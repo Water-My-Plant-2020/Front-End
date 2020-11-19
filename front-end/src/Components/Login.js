@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
 // import { useHistory } from 'react-router-dom';
-import { axiosWithAuth } from '../utils/authWithAxios';
+import axios from 'axios';
 
 
 const FormContainer = styled.div`
@@ -49,15 +49,15 @@ export default function Form() {
         e.preventDefault();
         console.log("Data Submitted: ", data);
     
-        axiosWithAuth()
-          .post("/auth/login", data)
+        axios
+          .post("https://water-my-plants-2020.herokuapp.com/login", data)
           .then((res) => {
             console.log(res, "submit response");
             localStorage.setItem("token", res.data.token);
             // history.push("/plants");
           })
           .catch((err) => {
-            console.log(err);
+            console.log(err.message);
           });
       };
 

@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
+import Card from './Components/MainComponents/Card';
 import Header from './Components/Header';
-import Main from './Components/Main';
 import Footer from './Components/Footer';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
@@ -12,11 +12,11 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Switch>
-      <PrivateRoute exact path="/plants" component={ Main }/>
-      <Route path="/" component={ Content }/>
+        <Switch>
+          <PrivateRoute exact path="/plants" component={ Card }/>
+          <Route path="" component={ Content } />
+        </Switch>
       <Footer />
-      </Switch>
     </div>
   );
 }
