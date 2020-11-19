@@ -12,6 +12,7 @@ const CardsLayout = styled.div`
 
 export default function Cards() {
     const [plantData, setPlantData] = useState(null);
+    console.log("Plant Data", plantData);
 
     const getPlants = (() => {
         axios.get(`https://water-my-plants-2020.herokuapp.com/plants`)

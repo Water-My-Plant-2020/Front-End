@@ -1,11 +1,11 @@
 import './App.css';
 import React from 'react';
-import Card from './Components/MainComponents/Card';
+import Cards from './Components/MainComponents/Cards';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
-import Content from './Components/Content';
+import Content from './Components/Content/';
 
 function App() {
   
@@ -13,7 +13,8 @@ function App() {
     <div className="App">
       <Header />
         <Switch>
-          <PrivateRoute exact path="/plants" component={ Card }/>
+          <PrivateRoute exact path="/plants" component={ Cards }/>
+          <Route path="/signup" component={ Signup } />
           <Route path="" component={ Content } />
         </Switch>
       <Footer />

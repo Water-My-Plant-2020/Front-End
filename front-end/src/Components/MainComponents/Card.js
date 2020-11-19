@@ -57,7 +57,7 @@ export default function Card(props) {
     const { data } = props;
     
     const [isWatered, setIsWatered] = useState(data.watered);
-
+    console.log(isWatered);
     const colorBasedOnState = currentState => {
         if(currentState === true){
             return 'royalblue';
