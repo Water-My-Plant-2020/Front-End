@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './Login';
 import styled from 'styled-components';
+import WaterMyPlantsLogo from './WaterMyPlantsLogo.png'
 
 const StyledHeader = styled.header`
     display: flex;
@@ -18,7 +19,7 @@ export default function Header() {
 
     return (
         <StyledHeader>
-            <h1><span>Water</span><br />My Plants</h1>
+            <img src={WaterMyPlantsLogo} style={{width:"20em", marginLeft:"1em"}}/>
             <Login />
         </StyledHeader>
     )
