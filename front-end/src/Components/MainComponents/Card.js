@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios'
 
 const PlantCard = styled.section`
     display: flex;
@@ -57,7 +59,6 @@ export default function Card(props) {
     const { data } = props;
     
     const [isWatered, setIsWatered] = useState(data.watered);
-    console.log(isWatered);
     const colorBasedOnState = currentState => {
         if(currentState === true){
             return 'royalblue';
@@ -70,6 +71,19 @@ export default function Card(props) {
     const statusBarColor = {
         backgroundColor: colorBasedOnState(isWatered)
     }
+
+    const history = useHistory();
+    const deletePlant = e => {
+        axios
+        .delete(`https://water-my-plants-2020.herokuapp.com/plants/${ data.id }/delete`)
+        .then((res) => {
+            console.log("Response from API for deletePlant: ", res.data)
+            history.replace("/plants")
+        })
+        .catch((err) => {
+            console.log("Error for deletePlant: ", err)
+        })
+    };
 
 
     if (data === null) {
@@ -90,6 +104,8 @@ export default function Card(props) {
                     <p>{`Watering Frequency: ${(data.h2oFrequency).toUpperCase()}`}</p>
                     <p></p>
                     <button onClick = {() => {setIsWatered(true)}} style={{width:'10em', margin: '0 auto'}}>Water</button>
+                    <button onClick = {() => console.log("Edit plant.")} style={{width:'10em', margin: '0 auto'}}>Edit</button>
+                    <button onClick = {deletePlant} style={{width:'10em', margin: '0 auto'}}>Delete</button>
                 </AttrDiv>
             </PlantCard>
         )

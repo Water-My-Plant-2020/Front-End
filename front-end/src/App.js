@@ -7,6 +7,7 @@ import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 import Content from './Components/Content/';
 import Signup from './Components-J/Sign-up';
+import AddPlant from './Components/AddPlant';
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
       <Header />
         <Switch>
           <PrivateRoute exact path="/plants" component={ Cards }/>
+          <Route path="/addplant" component={ AddPlant } />
           <Route path="/signup" component={ Signup } />
           <Route path="" component={ Content } />
         </Switch>

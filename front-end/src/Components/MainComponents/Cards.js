@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Card from './Card'
 import styled from 'styled-components'
@@ -35,10 +36,15 @@ export default function Cards() {
       }
       else {
         return (
+          <>
+          <button className="signUpButton">
+            <Link to="/addplant">Add Plant</Link>
+          </button>
           <CardsLayout>
             {plantData.map((char, index )=> 
             { return <Card key={index} data={char} /> })}
           </CardsLayout>
+          </>
         );
       }
     }
