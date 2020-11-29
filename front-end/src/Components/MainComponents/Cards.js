@@ -29,7 +29,7 @@ export default function Cards() {
           console.log(plantData);
       }, [])
 
-   if (plantData === null) {
+    if (plantData === null) {
         return (
           <h2>LOADING...</h2>
         )

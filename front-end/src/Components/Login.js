@@ -31,8 +31,7 @@ const ButtonContainer = styled.div`
 `
 
 export default function Form() {
-
-
+    const [ visible, setVisible ] = useState(true);
     const [data, setData] = useState({
         username: '',
         password: ''
@@ -55,46 +54,70 @@ export default function Form() {
         .then((res) => {
         localStorage.setItem("token", res.data.token);
         history.replace("/plants");
+        setVisible(false);
         })
         .catch((err) => {
         console.log(err.message);
         });
     };
 
+    if (visible === true) {
+        return (
+            <FormContainer className="form" >
+                <LoginForm onSubmit={formSubmit}>
+                    <InputSection>
+                        <div>
+                            <label htmlFor="username"> Username </label>
+                        </div>
+                        <input
+                            id="username"
+                            type="text"
+                            name="username"
+                            placeholder="Username / Email"
+                            onChange={onInputChange}
+                        />
+                    </InputSection>
 
-    return (
-        <FormContainer className="form" >
-            <LoginForm onSubmit={formSubmit}>
-                <InputSection>
-                    <div>
-                        <label htmlFor="username"> Username </label>
-                    </div>
-                    <input
-                        id="username"
-                        type="text"
-                        name="username"
-                        placeholder="Username / Email"
-                        onChange={onInputChange}
-                    />
-                </InputSection>
-
-                <InputSection>
-                    <div>
-                        <label htmlFor="password"> Password </label>
-                    </div>
-                    <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        onChange={onInputChange}
-                    />
-                    <ButtonContainer>
-                        <button className="loginButton" type='submit'>Login</button>
-                    </ButtonContainer>
-                </InputSection>
-            </LoginForm>
-        </FormContainer>
-    )
-
-}
+                    <InputSection>
+                        <div>
+                            <label htmlFor="password"> Password </label>
+                        </div>
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder="Password"
+                            onChange={onInputChange}
+                        />
+                        <ButtonContainer>
+                            <button className="loginButton" type='submit'>Login</button>
+                        </ButtonContainer>
+                    </InputSection>
+                </LoginForm>
+            </FormContainer>
+        );
+    } else {
+        return(
+            <>
+                <button
+                    className="loginButton"
+                    type='submit' style={{ marginRight: '25px' }}
+                    onClick={() => {
+                        axios
+                        .get('https://water-my-plants-2020.herokuapp.com/logout')
+                        .then( res => {
+                            console.log("Log Out Log");
+                            history.replace("/");
+                            setVisible(true);
+                        })
+                        .catch( err => {
+                            console.log("Log Out Error: ", err.message)
+                        });
+                    }}
+                >
+                    Log Out
+                </button>
+            </>
+        );
+    };
+};

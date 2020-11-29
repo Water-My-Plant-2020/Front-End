@@ -9,7 +9,7 @@ export const FormContainer = styled.div`
     
 `
 
-export const SignUpForm = styled.form`
+export const AddPlantForm = styled.form`
     justify-content: center;
     align-items: center;
     margin: 1em;

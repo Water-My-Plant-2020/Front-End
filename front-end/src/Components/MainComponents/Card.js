@@ -45,6 +45,14 @@ const Name = styled.h2`
     margin: 0;
 `;
 
+const Form = styled.form`
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    margin: 1em;
+    text-align: left;
+`
+
 const StatusBar = styled.div`
     display: flex;
     height: 3em;
@@ -56,17 +64,18 @@ const StatusBar = styled.div`
 `
 
 export default function Card(props) {
+    const [ edit, setEdit ] = useState(false);
     const { data } = props;
     
     const [isWatered, setIsWatered] = useState(data.watered);
     const colorBasedOnState = currentState => {
         if(currentState === true){
             return 'royalblue';
-          }
-          else{
-            return '#8a0303';
-          }
         }
+        else{
+            return '#8a0303';
+        }
+    };
 
     const statusBarColor = {
         backgroundColor: colorBasedOnState(isWatered)
@@ -75,14 +84,41 @@ export default function Card(props) {
     const history = useHistory();
     const deletePlant = e => {
         axios
-        .delete(`https://water-my-plants-2020.herokuapp.com/plants/${ data.id }/delete`)
+        .delete(`https://water-my-plants-2020.herokuapp.com/plants/${ data.id }`)
         .then((res) => {
             console.log("Response from API for deletePlant: ", res.data)
             history.replace("/plants")
         })
         .catch((err) => {
-            console.log("Error for deletePlant: ", err)
+            console.log("Error for deletePlant: ", err.message)
         })
+    };
+
+    const editUpdate = e => {
+        // preventing default action of page refresh
+        e.preventDefault();
+        console.log("Edit Update Props: ", e.target)
+        // Adding form data to variable updateData
+        const updateData = {
+            id: e.target.id.value,
+            nickname: e.target.nickname.value,
+            species: e.target.species.value,
+            h2oFrequency: e.target.h2o.value
+        }
+        console.log("Update Plant: ", updateData)
+        axios
+        .put(`https://water-my-plants-2020.herokuapp.com/plants/id/${ data.id }`, updateData)
+        .then((res) => {
+            console.log("Response from API for Plant Update: ", res.data)
+        })
+        .catch((err) => {
+            console.log("Error for Plant Update: ", err.message)
+        })
+        setEdit(false);
+    };
+
+    const cancel = () => {
+        setEdit(false);
     };
 
 
@@ -93,21 +129,44 @@ export default function Card(props) {
     }
     else {
         return(
-            <PlantCard>
-                <StatusBar style={statusBarColor}><h4>{isWatered === true ? 'Plant Has Been Watered' : 'Plant Needs Water'}</h4></StatusBar>
-                <ImgDiv>
-                    <PlantImg src={data.plantImage}></PlantImg>
-                </ImgDiv>
-                <AttrDiv>
-                    <Name>{data.nickname}</Name>
-                    <p>{`Species: ${data.speciesName}`}</p>
-                    <p>{`Watering Frequency: ${(data.h2oFrequency).toUpperCase()}`}</p>
-                    <p></p>
-                    <button onClick = {() => {setIsWatered(true)}} style={{width:'10em', margin: '0 auto'}}>Water</button>
-                    <button onClick = {() => console.log("Edit plant.")} style={{width:'10em', margin: '0 auto'}}>Edit</button>
-                    <button onClick = {deletePlant} style={{width:'10em', margin: '0 auto'}}>Delete</button>
-                </AttrDiv>
-            </PlantCard>
+            <>
+                {edit ? 
+                    <>
+                    <PlantCard>
+                        <AttrDiv>
+                            <Form onSubmit={ editUpdate }>
+                                <input style={{ display: 'none' }} type='text' defaultValue={ data.id } id='id'/>
+                                <p>Nick name:</p><input type='text' defaultValue={ data.nickname } id='nickname' name='nickname' />
+                                <p>Species:</p><input type='text' defaultValue={ data.speciesName } id='species' name='species' />
+                                <p>Watering Frequency:</p><input type='text' defaultValue={ data.h2oFrequency } id='h2o' name='h2o' />                                
+                                <p></p>
+                                <button type='submit' style={{width:'10em', margin: '0 auto'}}>Update</button>
+                                <button onClick={ cancel } style={{width:'10em', margin: '0 auto'}}>Cancel</button>
+                            </Form>
+                        </AttrDiv>
+                    </PlantCard>
+                    </>
+                :
+                    <PlantCard>
+                        <StatusBar style={statusBarColor}><h4>{isWatered === true ? 'Plant Has Been Watered' : 'Plant Needs Water'}</h4></StatusBar>
+                        <ImgDiv>
+                            <PlantImg src={data.plantImage}></PlantImg>
+                        </ImgDiv>
+                        <AttrDiv>
+                            <Name>{data.nickname}</Name>
+                            <p>{`Species: ${data.speciesName}`}</p>
+                            <p>{`Watering Frequency: ${(data.h2oFrequency).toUpperCase()}`}</p>
+                            <p></p>
+                            <button onClick = {() => {setIsWatered(true)}} style={{width:'10em', margin: '0 auto'}}>Water</button>
+                            <button onClick = {() => {
+                                setEdit(!edit);
+                                console.log("Edit Click");
+                            }} style={{width:'10em', margin: '0 auto'}}>Edit</button>
+                            <button onClick = {deletePlant} style={{width:'10em', margin: '0 auto'}}>Delete</button>
+                        </AttrDiv>
+                    </PlantCard>
+                }
+            </>
         )
         
     }

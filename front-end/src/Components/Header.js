@@ -19,7 +19,7 @@ export default function Header() {
 
     return (
         <StyledHeader>
-            <img src={WaterMyPlantsLogo} style={{width:"20em", marginLeft:"1em"}}/>
+            <img src={WaterMyPlantsLogo} alt='Logo' style={{width:"20em", marginLeft:"1em"}}/>
             <Login />
         </StyledHeader>
     )
