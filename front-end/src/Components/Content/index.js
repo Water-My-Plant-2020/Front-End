@@ -35,17 +35,24 @@ export const Content = () => {
     return (
       <Container>
         <Wrapper>
-          <Title>
-            <H1>
-              Water My <br/>Plants
-            </H1>
-            <P>
-              Never forget when it's time to feed your<br/>foliage and quench your plants' thirst.
-            </P>
-          </Title>
+          
           <TitleImage>
-            <img src={ TitleImg } alt="Plants" width="100%" height="100%"/>
+            <img src={ TitleImg } alt="Plants" width="100%" height="100%" style={{objectFit:'cover'}} />
           </TitleImage>
+          <Title>
+          <P>
+              Got plants? Sign Up for Water My Plants today!
+          </P>
+          <H2>
+              <button className="signUpButton" style={{width: '20em'}}>
+                <Link to="/signup">Sign Up Here</Link>
+              </button>
+          </H2>
+            <P>
+              Never forget when it's time to feed your foliage and quench your plants' thirst.
+            </P>
+              
+          </Title>
           <Features>
             <H2>
               Awesome Features

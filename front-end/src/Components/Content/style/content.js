@@ -4,26 +4,25 @@ export const Container = styled.div`
     display: flex;
     width: 100%;
     justify-content: center;
+    
 `
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 1152px;
     width: 100%;
+    justify-content: center;
 `
 
 export const Title = styled.div`
     display: flex;
     flex-direction: column;
-    max-height: 550px;
-    min-height: 550px;
-    width: 100%;
-    background: #059033;
+    justify-content: center;
+    align-content: center;
 `
 
 export const TitleImage = styled.image`
-    max-width: 1152px;
-    max-height: 880px;
+    height: 30em;
+    margin-top: -1rem;
 `
 
 export const H1 = styled.h1`
@@ -31,7 +30,6 @@ export const H1 = styled.h1`
     font-family: Helvetica;
     color: #d4eeb8;
     height: 200px;
-    margin: 75px 0px 25px 75px;
 `
 
 export const H2 = styled.h2`
@@ -39,12 +37,8 @@ export const H2 = styled.h2`
 `
 
 export const P = styled.p`
-    display: flex;
-    justify-content: flex-start;
     color: #93cb56;
     font-size: 2rem;
-    height: 275px;
-    margin: 20px 0px 0px 125px;
 `
 
 export const Features = styled.div`
