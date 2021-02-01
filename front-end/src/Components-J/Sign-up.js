@@ -15,9 +15,11 @@ const SignUpForm = styled.form`
     justify-content: center;
     align-items: center;
     margin: 1em;
-    width: 70%;
+    width: 40%;
     background: #059033;
-    padding: 5%
+    padding: 5%;
+    border: 1px solid #059033;
+    border-radius: 10px;
 `
 const InputSection = styled.section`
     flex-direction: column;
@@ -46,72 +48,67 @@ export default function SignUp() {
     const history = useHistory();
     const formSubmit = e => {
         e.preventDefault();
-        
+
         axios
             .post("https://water-my-plants-2020.herokuapp.com/register", data)
             .then((res) => {
-            history.replace("/plants");
+                history.replace("/plants");
             })
             .catch((err) => {
-            console.log(err.message);
+                console.log(err.message);
             });
-        };
-    
+    };
+
     return (
         <>
-        <ButtonContainer>
-            <button className="signUpButton">
-                <Link to="">Home</Link>
-            </button>
-        </ButtonContainer>
-        <FormContainer className="formSignUp">
-            <SignUpForm onSubmit={formSubmit}>
-                <div>
-                    <label><h2>Sign-Up</h2></label>
-                </div>
-                <InputSection>
+            <FormContainer className="formSignUp">
+                <SignUpForm onSubmit={formSubmit}>
                     <div>
-                        <label htmlFor="username"> Username </label>
+                        <label><h2>Sign-Up</h2></label>
                     </div>
-                    <input
-                        id="username"
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        onChange={onInputChange}
-                    />
-                </InputSection>
+                    <InputSection>
+                        <div>
+                            <label htmlFor="username"> Username </label>
+                        </div>
+                        <input
+                            id="username"
+                            type="text"
+                            name="username"
+                            placeholder="Username"
+                            onChange={onInputChange}
+                        />
+                    </InputSection>
 
-                <InputSection>
-                    <div>
-                        <label htmlFor="password"> Password </label>
-                    </div>
-                    <input
-                        id="password"
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        onChange={onInputChange}
-                    />
-                </InputSection>
+                    <InputSection>
+                        <div>
+                            <label htmlFor="password"> Password </label>
+                        </div>
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            onChange={onInputChange}
+                        />
+                    </InputSection>
 
-                <InputSection>
-                    <div>
-                        <label htmlFor="phonenumber"> Phone Number </label>
-                    </div>
-                    <input
-                        id="phonenumber"
-                        type="text"
-                        name="phonenumber"
-                        placeholder="Phone Number"
-                        onChange={onInputChange}
-                    />
-                    <ButtonContainer>
-                        <button className="signUpButton" type='submit'>Sign-Up</button>
-                    </ButtonContainer>
-                </InputSection>
-            </SignUpForm>
-        </FormContainer>
+                    <InputSection>
+                        <div>
+                            <label htmlFor="phonenumber"> Phone Number </label>
+                        </div>
+                        <input
+                            id="phonenumber"
+                            type="text"
+                            name="phonenumber"
+                            placeholder="Phone Number"
+                            onChange={onInputChange}
+                        />
+                        <ButtonContainer>
+                            <button className="signUpButton" type='submit'>Sign-Up</button>
+                        </ButtonContainer>
+                    </InputSection>
+                </SignUpForm>
+            </FormContainer>
         </>
     )
 

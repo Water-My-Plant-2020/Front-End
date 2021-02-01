@@ -2,6 +2,8 @@ import React from 'react';
 import Login from './Login';
 import styled from 'styled-components';
 import WaterMyPlantsLogo from './WaterMyPlantsLogo.png'
+import { Link } from 'react-router-dom';
+
 
 const StyledHeader = styled.header`
     display: flex;
@@ -19,7 +21,9 @@ export default function Header() {
 
     return (
         <StyledHeader>
-            <img src={WaterMyPlantsLogo} style={{width:"20em", marginLeft:"1em"}}/>
+            <Link to="">
+                <img src={WaterMyPlantsLogo} style={{ width: "20em", marginLeft: "1em" }} />
+            </Link>
             <Login />
         </StyledHeader>
     )

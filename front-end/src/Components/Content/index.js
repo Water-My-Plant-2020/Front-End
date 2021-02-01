@@ -41,11 +41,11 @@ export const Content = () => {
           </TitleImage>
           <Title>
           <P>
-              Got plants? Sign Up for Water My Plants today!
+              <b>Got plants? Sign Up for Water My Plants today!</b>
           </P>
           <H2>
-              <button className="signUpButton" style={{width: '20em'}}>
-                <Link to="/signup">Sign Up Here</Link>
+              <button className="signUpButton" style={{width: '20em', height: '5em'}}>
+                <Link to="/signup" style={{fontSize: '1.5em'}}>Sign Up Here</Link>
               </button>
           </H2>
             <P>
@@ -53,67 +53,6 @@ export const Content = () => {
             </P>
               
           </Title>
-          <Features>
-            <H2>
-              Awesome Features
-            </H2>
-          </Features>
-          <FeaturesContent>
-            <FeaturesContentWrapper>
-            <FeaturesContentTitle>
-              <span style={{fontWeight: 'bold', marginRight: '5px'}}>Etiam tristique libero </span> eu nibh porttitor amet fermentum. Nullam venenatis erat id vehicula ultrices sed ultricies condimentum.
-            </FeaturesContentTitle>
-            <LeftRightWrapper>
-              <LeftWrapper>
-                <LeftWrapperDiv>
-                  <LeftWrapperSpan>
-                    <FaLaptop />
-                  </LeftWrapperSpan>
-                  Consequat tempus
-                </LeftWrapperDiv>
-                <LeftWrapperDiv>
-                  <LeftWrapperSpan>
-                    <FaSignal />
-                  </LeftWrapperSpan>
-                  Libero nullam
-                </LeftWrapperDiv>
-                <LeftWrapperDiv>
-                  <LeftWrapperSpan>
-                    <FaMapMarkerAlt />
-                  </LeftWrapperSpan>
-                  Lorem ipsumcdolor
-                </LeftWrapperDiv>
-              </LeftWrapper>
-              <RightWrapper>
-                <RightWrapperDiv>
-                  <RightWrapperSpan>
-                    <FaBolt />
-                  </RightWrapperSpan>
-                  Etiam adipiscing
-                </RightWrapperDiv>
-                <RightWrapperDiv>
-                  <RightWrapperSpan>
-                    <FaCog />
-                  </RightWrapperSpan>
-                  Blandit condimentum
-                </RightWrapperDiv>
-                <RightWrapperDiv>
-                  <RightWrapperSpan>
-                    <FaCode />
-                  </RightWrapperSpan>
-                  Nibh amet venenatis
-                </RightWrapperDiv>
-              </RightWrapper>
-            </LeftRightWrapper>
-            </FeaturesContentWrapper>
-          </FeaturesContent>
-          <SignUp>
-            <H2>
-              <button className="signUpButton">
-                <Link to="/signup">Sign Up Here</Link>
-              </button>
-            </H2>
-          </SignUp>
         </Wrapper>
       </Container>
     )

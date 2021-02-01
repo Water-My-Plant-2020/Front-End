@@ -24,7 +24,7 @@ const InputSection = styled.section`
     margin-left: 1em;
 `
 
-const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div`
     display: flex;
     margin-top: 1em;
     justify-content: flex-end;
